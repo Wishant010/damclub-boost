@@ -11,9 +11,12 @@ const Footer = () => {
           {/* Club Info */}
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <div className="relative">
-                <div className="dam-piece-white w-6 h-6"></div>
-                <div className="dam-piece-red absolute -top-0.5 -right-0.5 w-4 h-4"></div>
+              <div className="relative w-8 h-8">
+                <img 
+                  src="/src/assets/damclub_logo.jpg" 
+                  alt="DC PAR Logo" 
+                  className="w-full h-full object-contain rounded-full"
+                />
               </div>
               <h3 className="text-xl font-heading font-bold">DC PAR</h3>
             </div>

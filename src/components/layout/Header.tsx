@@ -34,9 +34,12 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <div className="dam-piece-red animate-float"></div>
-              <div className="dam-piece-white absolute -top-1 -right-1 animate-float-delayed"></div>
+            <div className="relative w-12 h-12">
+              <img 
+                src="/src/assets/damclub_logo.jpg" 
+                alt="DC PAR Logo" 
+                className="w-full h-full object-contain rounded-full"
+              />
             </div>
             <div>
               <h1 className="text-xl lg:text-2xl font-heading font-bold text-primary">

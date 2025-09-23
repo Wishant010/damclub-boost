@@ -6,48 +6,48 @@
 
 @layer base {
   :root {
-    /* DC PAR Brand Colors */
-    --primary: 225 47% 15%; /* Donkerblauw/zwart voor damboard */
-    --primary-foreground: 45 30% 92%; /* Beige/wit voor damschijven */
+    /* DC PAR Brand Colors - Gebaseerd op het groene logo */
+    --primary: 140 45% 20%; /* Donkergroen van het logo */
+    --primary-foreground: 45 30% 95%; /* Crème wit */
     
-    --secondary: 45 30% 92%; /* Beige/wit */
-    --secondary-foreground: 225 47% 15%;
+    --secondary: 45 30% 92%; /* Licht crème */
+    --secondary-foreground: 140 45% 20%;
     
-    --accent: 0 65% 48%; /* Rood voor belangrijke elementen */
+    --accent: 140 60% 35%; /* Helderder groen voor accenten */
     --accent-foreground: 0 0% 100%;
     
-    --muted: 220 13% 97%; /* Lichtgrijs achtergrond */
-    --muted-foreground: 0 0% 20%;
+    --muted: 120 15% 96%; /* Zeer licht groenig grijs */
+    --muted-foreground: 140 15% 25%;
     
     --background: 0 0% 100%;
-    --foreground: 0 0% 20%;
+    --foreground: 140 25% 15%;
     
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 140 25% 15%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 140 25% 15%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 220 13% 91%;
-    --input: 220 13% 94%;
-    --ring: 225 47% 15%;
+    --border: 120 15% 88%;
+    --input: 120 15% 94%;
+    --ring: 140 45% 20%;
     
-    /* DC PAR Custom Design Tokens */
-    --damboard-dark: 38 8% 25%; /* Donkere damvelden */
-    --damboard-light: 45 30% 92%; /* Lichte damvelden */
+    /* DC PAR Custom Design Tokens - Groen thema */
+    --damboard-dark: 140 50% 25%; /* Donkere groene damvelden */
+    --damboard-light: 45 30% 92%; /* Lichte crème damvelden */
     
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(225 47% 15%) 0%, hsl(225 47% 25%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(0 65% 48%) 0%, hsl(15 70% 55%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 13% 97%) 100%);
+    /* Gradients - Groen gebaseerd */
+    --gradient-hero: linear-gradient(135deg, hsl(140 45% 20%) 0%, hsl(140 50% 30%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(140 60% 35%) 0%, hsl(150 65% 40%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(120 15% 96%) 100%);
     
-    /* Shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(225 47% 15% / 0.15);
-    --shadow-card: 0 4px 12px -2px hsl(225 47% 15% / 0.08);
-    --shadow-damboard: 0 8px 25px -5px hsl(225 47% 15% / 0.2);
+    /* Shadows - Groene tinten */
+    --shadow-elegant: 0 10px 30px -10px hsl(140 45% 20% / 0.15);
+    --shadow-card: 0 4px 12px -2px hsl(140 45% 20% / 0.08);
+    --shadow-damboard: 0 8px 25px -5px hsl(140 45% 20% / 0.2);
     
     /* Animations & Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -73,37 +73,37 @@
   }
 
   .dark {
-    --background: 225 47% 8%;
+    --background: 140 45% 8%;
     --foreground: 45 30% 92%;
     
-    --card: 225 47% 10%;
+    --card: 140 45% 10%;
     --card-foreground: 45 30% 92%;
     
-    --popover: 225 47% 10%;
+    --popover: 140 45% 10%;
     --popover-foreground: 45 30% 92%;
     
     --primary: 45 30% 92%;
-    --primary-foreground: 225 47% 15%;
+    --primary-foreground: 140 45% 15%;
     
-    --secondary: 225 47% 12%;
+    --secondary: 140 45% 12%;
     --secondary-foreground: 45 30% 92%;
     
-    --muted: 225 47% 12%;
+    --muted: 140 45% 12%;
     --muted-foreground: 45 15% 70%;
     
-    --accent: 0 65% 55%;
+    --accent: 140 60% 40%;
     --accent-foreground: 0 0% 100%;
     
-    --border: 225 47% 20%;
-    --input: 225 47% 15%;
+    --border: 140 45% 20%;
+    --input: 140 45% 15%;
     --ring: 45 30% 92%;
     
-    --damboard-dark: 38 8% 15%;
+    --damboard-dark: 140 50% 15%;
     --damboard-light: 45 20% 85%;
     
-    --gradient-hero: linear-gradient(135deg, hsl(225 47% 8%) 0%, hsl(225 47% 15%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(0 65% 55%) 0%, hsl(15 70% 60%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(225 47% 8%) 0%, hsl(225 47% 10%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(140 45% 8%) 0%, hsl(140 45% 15%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(140 60% 40%) 0%, hsl(150 65% 45%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(140 45% 8%) 0%, hsl(140 45% 10%) 100%);
     
     --shadow-elegant: 0 10px 30px -10px hsl(0 0% 0% / 0.3);
     --shadow-card: 0 4px 12px -2px hsl(0 0% 0% / 0.2);
@@ -127,14 +127,14 @@
 }
 
 @layer components {
-  /* Dam piece animations */
+  /* Dam piece animations - Aangepast voor groen thema */
   .dam-piece {
     @apply relative inline-block transition-all duration-300;
   }
   
   .dam-piece-red {
-    @apply w-8 h-8 rounded-full bg-accent shadow-lg;
-    background: radial-gradient(circle at 30% 30%, hsl(var(--accent)), hsl(0 65% 35%));
+    @apply w-8 h-8 rounded-full shadow-lg;
+    background: radial-gradient(circle at 30% 30%, hsl(var(--accent)), hsl(140 60% 25%));
   }
   
   .dam-piece-white {

@@ -57,7 +57,7 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        /* DC PAR Custom Colors */
+        /* DC PAR Custom Colors - Groen thema van logo */
         damboard: {
           dark: "hsl(var(--damboard-dark))",
           light: "hsl(var(--damboard-light))",
