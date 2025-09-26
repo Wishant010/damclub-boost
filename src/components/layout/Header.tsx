@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Home, Info, Calendar, Users, Trophy, Phone, Clock, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/ui-components';
 import { cn } from '@/lib/utils';
+import { getAssetUrl } from '@/lib/assets';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,7 +71,7 @@ const Header = () => {
             <Link to="/" className="flex items-center space-x-3 group">
               <div className="relative w-12 h-12">
                 <img
-                  src="/damclub_logo.jpg"
+                  src={getAssetUrl("/damclub_logo.jpg")}
                   alt="DC PAR Logo"
                   className="w-full h-full object-contain rounded-full"
                 />
@@ -194,7 +195,7 @@ const Header = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <img
-                  src="/damclub_logo.jpg"
+                  src={getAssetUrl("/damclub_logo.jpg")}
                   alt="DC PAR"
                   className="w-10 h-10 rounded-full"
                 />

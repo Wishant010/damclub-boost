@@ -6,6 +6,7 @@ import { Button, InfoCard } from '@/components/ui/ui-components';
 import DamboardHero from '@/components/animations/DamboardHero';
 import SimpleSlideshow from '@/components/SimpleSlideshow';
 import CTA from '@/components/CTA';
+import { getAssetUrl } from '@/lib/assets';
 import { MapPin, Clock, Users, Trophy, Calendar, Phone } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -137,22 +138,22 @@ const Home = () => {
             <div className="space-y-6">
               <SimpleSlideshow
                 images={[
-                  '/Dam-momenten/41.jpg',
-                  '/Dam-momenten/42.jpg',
-                  '/Dam-momenten/44.jpg',
-                  '/Dam-momenten/46.jpg',
-                  '/Dam-momenten/49.jpg',
-                  '/Dam-momenten/5.jpg',
-                  '/Dam-momenten/50.jpg',
-                  '/Dam-momenten/9.jpg',
-                  '/prijzen/16.jpg',
-                  '/prijzen/17.jpg',
-                  '/prijzen/18.jpg',
-                  '/prijzen/20.jpg',
-                  '/prijzen/21.jpg',
-                  '/prijzen/47.jpg',
-                  '/prijzen/11.jpg',
-                  '/prijzen/11 (1).jpg',
+                  getAssetUrl('/Dam-momenten/41.jpg'),
+                  getAssetUrl('/Dam-momenten/42.jpg'),
+                  getAssetUrl('/Dam-momenten/44.jpg'),
+                  getAssetUrl('/Dam-momenten/46.jpg'),
+                  getAssetUrl('/Dam-momenten/49.jpg'),
+                  getAssetUrl('/Dam-momenten/5.jpg'),
+                  getAssetUrl('/Dam-momenten/50.jpg'),
+                  getAssetUrl('/Dam-momenten/9.jpg'),
+                  getAssetUrl('/prijzen/16.jpg'),
+                  getAssetUrl('/prijzen/17.jpg'),
+                  getAssetUrl('/prijzen/18.jpg'),
+                  getAssetUrl('/prijzen/20.jpg'),
+                  getAssetUrl('/prijzen/21.jpg'),
+                  getAssetUrl('/prijzen/47.jpg'),
+                  getAssetUrl('/prijzen/11.jpg'),
+                  getAssetUrl('/prijzen/11 (1).jpg'),
                 ]}
                 interval={5000}
               />

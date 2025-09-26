@@ -5,6 +5,7 @@ import { Users, Heart, Target, Award, ChevronLeft, ChevronRight } from 'lucide-r
 import { InfoCard } from '@/components/ui/ui-components';
 import SquareRipple from '@/components/ui/SquareRipple';
 import CTA from '@/components/CTA';
+import { getAssetUrl } from '@/lib/assets';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,10 +13,10 @@ const About = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const aboutImages = [
-    '/Over-ons/2.jpg',
-    '/Over-ons/3.jpg',
-    '/Over-ons/7.jpg',
-    '/Over-ons/40.jpg'
+    getAssetUrl('/Over-ons/2.jpg'),
+    getAssetUrl('/Over-ons/3.jpg'),
+    getAssetUrl('/Over-ons/7.jpg'),
+    getAssetUrl('/Over-ons/40.jpg')
   ];
 
   const nextSlide = useCallback(() => {
@@ -306,7 +307,7 @@ const About = () => {
                 <div className="p-6">
                   <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-green-100">
                     <img
-                      src="/bestuur/Eduard Autar.jpg"
+                      src={getAssetUrl("/bestuur/Eduard Autar.jpg")}
                       alt="Eduard Autar"
                       className="w-full h-full object-cover object-top"
                     />
@@ -326,7 +327,7 @@ const About = () => {
                 <div className="p-6">
                   <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-green-100">
                     <img
-                      src="/bestuur/Ashok-Bhajan.jpg"
+                      src={getAssetUrl("/bestuur/Ashok-Bhajan.jpg")}
                       alt="Ashok Bhajan"
                       className="w-full h-full object-cover object-position-ashok"
                     />
@@ -344,7 +345,7 @@ const About = () => {
                 <div className="p-6">
                   <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-green-100">
                     <img
-                      src="/bestuur/Ratan-Ganeshi.jpg"
+                      src={getAssetUrl("/bestuur/Ratan-Ganeshi.jpg")}
                       alt="Ratan Ganeshi"
                       className="w-full h-full object-cover object-position-ratan"
                     />
@@ -364,7 +365,7 @@ const About = () => {
                 <div className="p-6">
                   <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-green-100">
                     <img
-                      src="/bestuur/Somdath.jpg"
+                      src={getAssetUrl("/bestuur/Somdath.jpg")}
                       alt="Somdath"
                       className="w-full h-full object-cover object-position-eduard"
                     />
@@ -382,7 +383,7 @@ const About = () => {
                 <div className="p-6">
                   <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-green-100">
                     <img
-                      src="/bestuur/Ramdew-Jahani.jpg"
+                      src={getAssetUrl("/bestuur/Ramdew-Jahani.jpg")}
                       alt="Ramdew Jahani"
                       className="w-full h-full object-cover object-top"
                     />
@@ -400,7 +401,7 @@ const About = () => {
                 <div className="p-6">
                   <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-green-100">
                     <img
-                      src="/bestuur/Arthur.jpg"
+                      src={getAssetUrl("/bestuur/Arthur.jpg")}
                       alt="Arthur"
                       className="w-full h-full object-cover object-position-arthur"
                     />
