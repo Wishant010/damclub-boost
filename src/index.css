@@ -449,4 +449,50 @@
   .object-position-ratan {
     object-position: 50% 30%;
   }
+
+  /* Ripple Square dynamic styling with data attributes */
+  .ripple-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    border-width: 1px;
+  }
+
+  /* Default size */
+  .ripple-square {
+    width: 210px;
+    height: 210px;
+    opacity: 0.24;
+    border-style: solid;
+    animation-delay: 0ms;
+  }
+
+  /* Size variants */
+  .ripple-square[data-size="280"] { width: 280px; height: 280px; }
+  .ripple-square[data-size="350"] { width: 350px; height: 350px; }
+  .ripple-square[data-size="420"] { width: 420px; height: 420px; }
+  .ripple-square[data-size="490"] { width: 490px; height: 490px; }
+  .ripple-square[data-size="560"] { width: 560px; height: 560px; }
+  .ripple-square[data-size="630"] { width: 630px; height: 630px; }
+  .ripple-square[data-size="700"] { width: 700px; height: 700px; }
+
+  /* Opacity variants */
+  .ripple-square[data-opacity="0.21"] { opacity: 0.21; }
+  .ripple-square[data-opacity="0.18"] { opacity: 0.18; }
+  .ripple-square[data-opacity="0.15"] { opacity: 0.15; }
+  .ripple-square[data-opacity="0.12"] { opacity: 0.12; }
+  .ripple-square[data-opacity="0.09"] { opacity: 0.09; }
+  .ripple-square[data-opacity="0.06"] { opacity: 0.06; }
+
+  /* Animation delay variants */
+  .ripple-square[data-delay="80"] { animation-delay: 80ms; }
+  .ripple-square[data-delay="160"] { animation-delay: 160ms; }
+  .ripple-square[data-delay="240"] { animation-delay: 240ms; }
+  .ripple-square[data-delay="320"] { animation-delay: 320ms; }
+  .ripple-square[data-delay="400"] { animation-delay: 400ms; }
+  .ripple-square[data-delay="480"] { animation-delay: 480ms; }
+
+  /* Border style variants */
+  .ripple-square[data-border="dashed"] { border-style: dashed; }
 }

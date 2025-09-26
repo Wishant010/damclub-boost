@@ -120,9 +120,7 @@ const SilkPlane = forwardRef<Mesh, SilkPlaneProps>(function SilkPlane({ uniforms
 
   return (
     <mesh ref={ref}>
-      {/* @ts-expect-error Three.js JSX components */}
       <planeGeometry args={[1, 1, 1, 1]} />
-      {/* @ts-expect-error Three.js JSX components */}
       <shaderMaterial uniforms={uniforms} vertexShader={vertexShader} fragmentShader={fragmentShader} />
     </mesh>
   );

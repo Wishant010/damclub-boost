@@ -17,18 +17,11 @@ const RippleSquare: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={`absolute shadow-xl animate-ripple-square ${className}`}
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        animationDelay: `${animationDelay}ms`,
-        opacity: opacity,
-        borderStyle: borderStyle,
-        borderWidth: '1px',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%) scale(1)',
-      }}
+      className={`ripple-square shadow-xl animate-ripple-square ${className}`}
+      data-size={size}
+      data-opacity={opacity}
+      data-delay={animationDelay}
+      data-border={borderStyle}
     />
   );
 };
