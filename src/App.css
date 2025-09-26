@@ -1,42 +1,66 @@
+/* Root container - full width for better layout */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height voor mobile */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Full viewport height support voor alle browsers */
+.h-screen {
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height voor moderne browsers */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 640px) {
+  /* Mobile adjustments */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
-  to {
-    transform: rotate(360deg);
+
+  .hero-content {
+    padding: 0.5rem;
+  }
+
+  /* Adjust hero voor kleine schermen */
+  .hero-section {
+    padding-top: 3.5rem; /* Voor de header */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 768px) {
+  /* Tablet adjustments */
+  .info-card {
+    margin-bottom: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
   }
 }
 
-.card {
-  padding: 2em;
+/* Improve accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-dam {
+    border: 2px solid currentColor;
+  }
+
+  .card {
+    border-width: 2px;
+  }
 }

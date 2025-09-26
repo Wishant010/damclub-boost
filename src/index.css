@@ -7,25 +7,25 @@
 @layer base {
   :root {
     /* DC PAR Brand Colors - Gebaseerd op het groene logo */
-    --primary: 140 45% 20%; /* Donkergroen van het logo */
-    --primary-foreground: 45 30% 95%; /* Crème wit */
-    
+    --primary: 140 45% 30%; /* Verbeterd donkergroen voor betere leesbaarheid */
+    --primary-foreground: 0 0% 100%; /* Helder wit voor contrast */
+
     --secondary: 45 30% 92%; /* Licht crème */
-    --secondary-foreground: 140 45% 20%;
-    
-    --accent: 140 60% 35%; /* Helderder groen voor accenten */
+    --secondary-foreground: 140 45% 25%;
+
+    --accent: 140 60% 40%; /* Helderder groen voor betere zichtbaarheid */
     --accent-foreground: 0 0% 100%;
+
+    --muted: 120 15% 94%; /* Lichter voor betere achtergrond */
+    --muted-foreground: 140 25% 35%; /* Donkerder voor betere leesbaarheid */
+
+    --background: 0 0% 94%; /* Donkerder grijs hoofdachtergrond */
+    --foreground: 140 35% 18%; /* Donkerder voor beter contrast */
     
-    --muted: 120 15% 96%; /* Zeer licht groenig grijs */
-    --muted-foreground: 140 15% 25%;
-    
-    --background: 0 0% 100%;
-    --foreground: 140 25% 15%;
-    
-    --card: 0 0% 100%;
+    --card: 0 0% 96%; /* Donkerder grijs voor cards */
     --card-foreground: 140 25% 15%;
     
-    --popover: 0 0% 100%;
+    --popover: 0 0% 96%; /* Donkerder grijs voor popover */
     --popover-foreground: 140 25% 15%;
     
     --destructive: 0 84.2% 60.2%;
@@ -42,7 +42,7 @@
     /* Gradients - Groen gebaseerd */
     --gradient-hero: linear-gradient(135deg, hsl(140 45% 20%) 0%, hsl(140 50% 30%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(140 60% 35%) 0%, hsl(150 65% 40%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(120 15% 96%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 94%) 0%, hsl(120 15% 92%) 100%);
     
     /* Shadows - Groene tinten */
     --shadow-elegant: 0 10px 30px -10px hsl(140 45% 20% / 0.15);
@@ -55,7 +55,7 @@
     
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 0 0% 96%; /* Licht grijs voor sidebar */
 
     --sidebar-foreground: 240 5.3% 26.1%;
 
@@ -63,7 +63,7 @@
 
     --sidebar-primary-foreground: 0 0% 98%;
 
-    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent: 240 4.8% 94%; /* Iets donkerder grijs voor accent */
 
     --sidebar-accent-foreground: 240 5.9% 10%;
 
@@ -118,6 +118,30 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+    line-height: 1.2;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply leading-relaxed;
   }
   
   /* Smooth scrolling */
@@ -153,12 +177,40 @@
   
   /* Damboard pattern */
   .damboard-pattern {
-    background-image: 
+    background-image:
       repeating-conic-gradient(
         hsl(var(--damboard-dark)) 0deg 90deg,
         hsl(var(--damboard-light)) 90deg 180deg
       );
     background-size: 40px 40px;
+  }
+
+  /* Diagonal green stripes pattern */
+  .diagonal-stripes {
+    position: relative;
+  }
+
+  .diagonal-stripes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(34, 197, 94, 0.04) 40px,
+      rgba(34, 197, 94, 0.04) 80px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .diagonal-stripes > * {
+    position: relative;
+    z-index: 1;
   }
   
   /* Card styles */
@@ -176,34 +228,201 @@
     box-shadow: var(--shadow-elegant);
   }
   
-  /* Navigation styles */
+  /* Navigation styles - Transparant met witte tekst */
   .nav-link {
-    @apply relative transition-colors duration-300;
+    @apply relative transition-colors duration-300 font-semibold;
   }
   
   .nav-link::after {
-    @apply absolute bottom-0 left-0 w-full h-0.5 bg-accent scale-x-0 transition-transform duration-300;
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400 scale-x-0 transition-transform duration-300;
     content: '';
     transform-origin: right;
   }
   
   .nav-link:hover::after,
   .nav-link.active::after {
-    @apply scale-x-100;
+    @apply scale-x-100 bg-yellow-300;
     transform-origin: left;
   }
   
-  /* Button animations */
+  /* Button animations - Verbeterde zichtbaarheid */
   .btn-dam {
-    @apply relative overflow-hidden transition-all duration-300;
+    @apply relative overflow-hidden transition-all duration-300 font-semibold;
+    min-height: 2.5rem;
   }
   
   .btn-dam::before {
-    @apply absolute inset-0 bg-accent/10 translate-x-[-100%] transition-transform duration-300;
+    @apply absolute inset-0 bg-green-600/10 translate-x-[-100%] transition-transform duration-300;
     content: '';
   }
   
   .btn-dam:hover::before {
     @apply translate-x-0;
+  }
+  
+  /* Verbeterde button zichtbaarheid */
+  .btn-dam.bg-accent {
+    @apply bg-green-700 text-white shadow-lg;
+  }
+  
+  .btn-dam.bg-accent:hover {
+    @apply bg-green-800;
+  }
+  
+  .btn-dam.bg-primary {
+    @apply bg-green-700 text-white shadow-lg;
+  }
+  
+  .btn-dam.bg-primary:hover {
+    @apply bg-green-800;
+  }
+
+  /* Ripple Square Animation */
+  @keyframes ripple-effect {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+  }
+
+  .animate-ripple-square {
+    animation: ripple-effect 2s ease-in-out infinite;
+  }
+
+  /* Fade in animation */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+
+  /* Floating animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-30px) rotate(3deg);
+    }
+  }
+
+  @keyframes float-delayed {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    33% {
+      transform: translateY(-15px) translateX(10px);
+    }
+    66% {
+      transform: translateY(-25px) translateX(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 5s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  /* DamBoard styling */
+  .damboard-frame {
+    background: linear-gradient(145deg, #8B4513, #A0522D);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 15px 30px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .damboard-surface {
+    background: linear-gradient(135deg, #654321, #8B4513);
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .damboard-square-dark {
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .damboard-square-light {
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .damboard-piece-shadow {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  }
+
+  .damboard-piece-inner-white {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .damboard-piece-inner-black {
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  }
+
+  .bg-diagonal-stripes {
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.1) 35px, rgba(255,255,255,0.1) 70px);
+  }
+
+  /* Mobile menu animations */
+  @keyframes slideInFromTop {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-in {
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+  }
+
+  .slide-in-from-top-2 {
+    animation-name: slideInFromTop;
+  }
+
+  /* Mobile menu active state */
+  .mobile-nav-active {
+    position: relative;
+  }
+
+  .mobile-nav-active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 70%;
+    background: linear-gradient(to bottom, transparent, #177b19, transparent);
+    border-radius: 0 2px 2px 0;
   }
 }
