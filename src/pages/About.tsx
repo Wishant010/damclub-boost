@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Users, Heart, Target, Award, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -18,9 +18,9 @@ const About = () => {
     '/Over-ons/40.jpg'
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % aboutImages.length);
-  };
+  }, [aboutImages.length]);
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + aboutImages.length) % aboutImages.length);
@@ -33,7 +33,7 @@ const About = () => {
     }, 4000); // Change slide every 4 seconds
 
     return () => clearInterval(interval);
-  }, [currentSlide]);
+  }, [nextSlide]);
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero section animation
@@ -328,8 +328,7 @@ const About = () => {
                     <img
                       src="/bestuur/Ashok-Bhajan.jpg"
                       alt="Ashok Bhajan"
-                      className="w-full h-full object-cover"
-                      style={{ objectPosition: '50% 15%' }}
+                      className="w-full h-full object-cover object-position-ashok"
                     />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 text-center mb-1">Ashok Bhajan</h3>
@@ -347,8 +346,7 @@ const About = () => {
                     <img
                       src="/bestuur/Ratan-Ganeshi.jpg"
                       alt="Ratan Ganeshi"
-                      className="w-full h-full object-cover"
-                      style={{ objectPosition: '50% 20%' }}
+                      className="w-full h-full object-cover object-position-ratan"
                     />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 text-center mb-1">Ratan Ganeshi</h3>
@@ -368,8 +366,7 @@ const About = () => {
                     <img
                       src="/bestuur/Somdath.jpg"
                       alt="Somdath"
-                      className="w-full h-full object-cover"
-                      style={{ objectPosition: '50% 30%' }}
+                      className="w-full h-full object-cover object-position-eduard"
                     />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 text-center mb-1">Somdath</h3>
@@ -405,8 +402,7 @@ const About = () => {
                     <img
                       src="/bestuur/Arthur.jpg"
                       alt="Arthur"
-                      className="w-full h-full object-cover"
-                      style={{ objectPosition: '50% 20%' }}
+                      className="w-full h-full object-cover object-position-arthur"
                     />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 text-center mb-1">Arthur</h3>

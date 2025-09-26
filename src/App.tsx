@@ -1,6 +1,5 @@
 import { TooltipProvider } from '@/components/ui/ui-components';
 import { Toaster } from '@/components/ui/toaster';
-// @ts-expect-error - React Query import issue
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
@@ -22,11 +21,21 @@ import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
 
+// Get base path from environment or import.meta
+const getBasePath = () => {
+  // In development, use root path
+  if (import.meta.env.DEV) {
+    return '/';
+  }
+  // In production, use the configured base
+  return import.meta.env.BASE_URL || '/';
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
-      <BrowserRouter>
+      <BrowserRouter basename={getBasePath()}>
         <ScrollToTop />
         <div className="min-h-screen flex flex-col">
           <Header />

@@ -4,10 +4,16 @@ import legacy from '@vitejs/plugin-legacy';
 import path from 'path';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }: ConfigEnv) => ({
-  base: command === 'build' ? '/damclub-boost/' : '/',
+export default defineConfig(({ command, mode }: ConfigEnv) => ({
+  base: command === 'build' && mode === 'production' ? '/damclub-boost/' : '/',
   server: {
-    host: "::",
+    host: "0.0.0.0", // Listen on all interfaces for better local development
+    port: 8080,
+    strictPort: true, // Fail if port is in use
+    open: false, // Don't auto-open browser
+  },
+  preview: {
+    host: "0.0.0.0",
     port: 8080,
   },
   plugins: [

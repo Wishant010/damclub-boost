@@ -96,7 +96,7 @@ const Activities = () => {
       {/* Enhanced Hero Section with Silk Background */}
       <section className="page-header relative min-h-[550px] lg:min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Silk Background - Darker and animated */}
-        <div className="silk-background absolute inset-0 z-0" style={{ width: '100%', height: '100%' }}>
+        <div className="silk-background absolute inset-0 z-0 w-full h-full">
           <Silk
             speed={1}
             scale={1.4}

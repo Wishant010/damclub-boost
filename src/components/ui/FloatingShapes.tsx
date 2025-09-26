@@ -13,14 +13,7 @@ const FloatingShapes: React.FC = () => {
       <div className="absolute bottom-1/3 right-10 w-36 h-36 bg-green-500/5 rotate-12 blur-3xl animate-float-delayed" />
 
       {/* Grid pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }}
-      />
+      <div className="absolute inset-0 opacity-[0.02] grid-pattern" />
     </div>
   );
 };

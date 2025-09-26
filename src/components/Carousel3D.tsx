@@ -31,6 +31,9 @@ const Carousel3D = ({
   useEffect(() => {
     if (!carouselContainer.current) return;
 
+    // Store container reference for cleanup
+    const container = carouselContainer.current;
+
     // Setup scene
     const scene = new THREE.Scene();
     sceneRef.current = scene;
@@ -43,10 +46,10 @@ const Carousel3D = ({
 
     // Setup renderer
     const renderer = new CSS3DRenderer();
-    const containerWidth = carouselContainer.current.clientWidth;
-    const containerHeight = carouselContainer.current.clientHeight;
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
     renderer.setSize(containerWidth, containerHeight);
-    carouselContainer.current.appendChild(renderer.domElement);
+    container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
     // Create carousel
@@ -109,8 +112,12 @@ const Carousel3D = ({
         cancelAnimationFrame(animationIdRef.current);
       }
       window.removeEventListener('resize', handleResize);
-      if (carouselContainer.current && rendererRef.current) {
-        carouselContainer.current.removeChild(rendererRef.current.domElement);
+      
+      // Use the stored container reference
+      const renderer = rendererRef.current;
+      
+      if (container && renderer) {
+        container.removeChild(renderer.domElement);
       }
     };
   }, [items, width, height]);

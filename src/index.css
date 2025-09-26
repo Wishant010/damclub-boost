@@ -425,4 +425,28 @@
     background: linear-gradient(to bottom, transparent, #177b19, transparent);
     border-radius: 0 2px 2px 0;
   }
+
+  /* Grid pattern background */
+  .grid-pattern {
+    background-image: linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
+                     linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Custom object positions for board member photos */
+  .object-position-ashok {
+    object-position: 50% 15%;
+  }
+
+  .object-position-arthur {
+    object-position: 50% 20%;
+  }
+
+  .object-position-eduard {
+    object-position: 50% 25%;
+  }
+
+  .object-position-ratan {
+    object-position: 50% 30%;
+  }
 }
