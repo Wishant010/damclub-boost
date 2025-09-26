@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-4">
               <div className="relative w-8 h-8">
                 <img
-                  src="/src/assets/damclub_logo.jpg"
+                  src="/damclub_logo.jpg"
                   alt="DC PAR Logo"
                   className="w-full h-full object-contain rounded-full"
                 />

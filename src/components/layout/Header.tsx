@@ -70,7 +70,7 @@ const Header = () => {
             <Link to="/" className="flex items-center space-x-3 group">
               <div className="relative w-12 h-12">
                 <img
-                  src="/src/assets/damclub_logo.jpg"
+                  src="/damclub_logo.jpg"
                   alt="DC PAR Logo"
                   className="w-full h-full object-contain rounded-full"
                 />
@@ -194,7 +194,7 @@ const Header = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <img
-                  src="/src/assets/damclub_logo.jpg"
+                  src="/damclub_logo.jpg"
                   alt="DC PAR"
                   className="w-10 h-10 rounded-full"
                 />
