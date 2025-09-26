@@ -1,73 +1,67 @@
-# Welcome to your Lovable project
+# DC PAR - Damclub Denk Centraal Prins Alexander Rotterdam
 
-## Project info
+Een moderne website voor Damclub DC PAR in Rotterdam Ommoord, gebouwd met React, TypeScript, Tailwind CSS en Vite.
 
-**URL**: https://lovable.dev/projects/01eebc0b-e7e4-4288-bf20-c8771aad6cd3
+## 🌐 Live Website
 
-## How can I edit this code?
+De website is live beschikbaar op: [https://wishant010.github.io/damclub-boost/](https://wishant010.github.io/damclub-boost/)
 
-There are several ways of editing your application.
+## 🚀 Quick Start
 
-**Use Lovable**
+### Lokaal ontwikkelen
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/01eebc0b-e7e4-4288-bf20-c8771aad6cd3) and start prompting.
+Clone dit repository en volg deze stappen:
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm install --legacy-peer-deps
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+De site draait nu op http://localhost:8080
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build voor productie
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Preview build
 
-## What technologies are used for this project?
+```bash
+npm run preview
+```
 
-This project is built with:
+## 🎯 Over DC PAR
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Damclub Denk Centraal Prins Alexander Rotterdam (DC PAR) is een gezellige damclub in Rotterdam Ommoord. 
 
-## How can I deploy this project?
+**Wanneer & Waar:**
+- 📅 Elke vrijdagavond vanaf 19:00 uur
+- 📍 Gemeenschapshuis De Brug, Sigrid Undsetweg 300
+- 🚗 Gratis parkeren beschikbaar
 
-Simply open [Lovable](https://lovable.dev/projects/01eebc0b-e7e4-4288-bf20-c8771aad6cd3) and click on Share -> Publish.
+## 🛠️ Tech Stack
 
-## Can I connect a custom domain to my Lovable project?
+- **Frontend**: React 18 + TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Build Tool**: Vite
+- **Animations**: GSAP
+- **3D Graphics**: Three.js + React Three Fiber
+- **Forms**: React Hook Form + Zod
+- **Routing**: React Router DOM
+- **State**: TanStack Query
 
-Yes, you can!
+## 🌍 Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+De website wordt automatisch gedeployed naar GitHub Pages bij elke push naar de main branch via GitHub Actions.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📧 Contact
+
+Voor vragen over de damclub:
+- 📧 Email: info@dcpar.nl  
+- 📞 Telefoon: 010 - 123 4567
+- 📍 Bezoek ons: Elke vrijdag vanaf 19:00
+
+---
+
+**"Schuif een schijf voor plezierige tijdverdrijf"** - DC PAR Rotterdam
