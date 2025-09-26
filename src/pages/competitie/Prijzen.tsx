@@ -1,6 +1,6 @@
 const Prijzen = () => {
   return (
-    <main className="relative overflow-hidden bg-gradient-to-tl from-green-600 via-green-700 to-primary">
+    <main className="relative overflow-hidden bg-gradient-to-tl from-green-600 via-green-700 to-primary min-h-screen">
       {/* Unique Green Trophy Background */}
       <div className="absolute inset-0">
         {/* Trophy pattern */}
@@ -29,7 +29,7 @@ const Prijzen = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-[60vh] flex items-center justify-center py-20">
+      <div className="relative z-10 min-h-screen flex items-center justify-center py-20">
         <div className="text-center">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-white mb-8 drop-shadow-2xl">
             Coming Soon

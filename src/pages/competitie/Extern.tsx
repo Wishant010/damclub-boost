@@ -1,6 +1,6 @@
 const Extern = () => {
   return (
-    <main className="relative overflow-hidden bg-gradient-to-bl from-primary via-green-700 to-green-900">
+    <main className="relative overflow-hidden bg-gradient-to-bl from-primary via-green-700 to-green-900 min-h-screen">
       {/* Unique Green Waves Background */}
       <div className="absolute inset-0">
         {/* Animated waves */}
@@ -15,7 +15,7 @@ const Extern = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-[60vh] flex items-center justify-center py-20">
+      <div className="relative z-10 min-h-screen flex items-center justify-center py-20">
         <div className="text-center">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-white mb-8 drop-shadow-2xl">
             Coming Soon

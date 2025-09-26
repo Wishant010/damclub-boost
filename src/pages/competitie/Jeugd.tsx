@@ -1,6 +1,6 @@
 const Jeugd = () => {
   return (
-    <main className="relative overflow-hidden bg-gradient-to-tr from-green-900 via-primary to-green-600">
+    <main className="relative overflow-hidden bg-gradient-to-tr from-green-900 via-primary to-green-600 min-h-screen">
       {/* Unique Green Hexagon Background */}
       <div className="absolute inset-0">
         {/* Hexagon pattern */}
@@ -22,7 +22,7 @@ const Jeugd = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-[60vh] flex items-center justify-center py-20">
+      <div className="relative z-10 min-h-screen flex items-center justify-center py-20">
         <div className="text-center">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-white mb-8 drop-shadow-2xl">
             Coming Soon

@@ -1,6 +1,6 @@
 const Intern = () => {
   return (
-    <main className="relative overflow-hidden bg-gradient-to-br from-green-800 via-green-700 to-primary">
+    <main className="relative overflow-hidden bg-gradient-to-br from-green-800 via-green-700 to-primary min-h-screen">
       {/* Unique Green Background with Pattern */}
       <div className="absolute inset-0">
         {/* Animated circles pattern */}
@@ -14,7 +14,7 @@ const Intern = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-[60vh] flex items-center justify-center py-20">
+      <div className="relative z-10 min-h-screen flex items-center justify-center py-20">
         <div className="text-center">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-white mb-8 drop-shadow-2xl">
             Coming Soon
