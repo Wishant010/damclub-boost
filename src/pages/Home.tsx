@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Button } from '@/components/ui/button';
+import { Button, InfoCard } from '@/components/ui/ui-components';
 import DamboardHero from '@/components/animations/DamboardHero';
-import InfoCard from '@/components/ui/InfoCard';
+import SimpleSlideshow from '@/components/SimpleSlideshow';
+import CTA from '@/components/CTA';
 import { MapPin, Clock, Users, Trophy, Calendar, Phone } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -28,26 +29,6 @@ const Home = () => {
         }
       );
 
-      // Info cards scroll animation
-      gsap.fromTo(
-        '.info-card',
-        {
-          y: 60,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.info-section',
-            start: 'top 80%',
-            end: 'bottom 20%',
-          },
-        }
-      );
 
       // About section animation
       gsap.fromTo(
@@ -73,116 +54,139 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen diagonal-stripes">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
+      <section className="relative min-h-screen h-screen flex items-center justify-center bg-gradient-to-br from-primary via-primary/95 to-accent/90 overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 damboard-pattern opacity-5"></div>
-        
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="hero-content max-w-4xl mx-auto">
-            <div className="mb-8">
+        <div className="absolute inset-0 damboard-pattern opacity-10"></div>
+
+        <div className="relative z-10 container mx-auto px-4 text-center pt-12 md:pt-16">
+          <div className="hero-content max-w-7xl mx-auto">
+            <div className="mb-8 md:mb-12 flex justify-center">
               <DamboardHero />
             </div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-primary-foreground mb-6">
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white mb-3 md:mb-4 mt-4 sm:mt-8 md:mt-12 lg:mt-16 drop-shadow-2xl relative z-20">
               Welkom bij{' '}
-              <span className="accent-gradient bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-300 to-yellow-100 bg-clip-text text-transparent">
                 DC PAR
               </span>
             </h1>
             
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-primary-foreground/90 mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-white/95 mb-2 drop-shadow-lg px-2">
               Damclub Denk Centraal Prins Alexander Rotterdam
             </h2>
-            
-            <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-              "Schuif een schijf voor plezierige tijdverdrijf" - 
-              Ontdek de passie voor dammen in Rotterdam Ommoord. 
-              Voor jong en oud, van beginner tot gevorderde.
+
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed font-light px-4">
+              "Schuif een schijf voor plezierige tijdverdrijf" <br/>
+              <span className="text-sm sm:text-base md:text-lg">Ontdek de passie voor dammen in Rotterdam Ommoord.
+              Voor jong en oud, van beginner tot gevorderde.</span>
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="btn-dam bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-3">
-                <Link to="/lid-worden">Wordt Lid</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/10 text-lg px-8 py-3">
-                <Link to="/activiteiten">Onze Activiteiten</Link>
-              </Button>
-            </div>
           </div>
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-primary-foreground/50 rounded-full mt-2 animate-pulse"></div>
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
 
-      {/* Quick Info Section */}
-      <section className="info-section py-16 bg-gradient-subtle">
+      {/* Quick Info Section with Slideshow */}
+      <section className="info-section py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+          <div className="mb-12 text-center">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">
               Kom Kennismaken
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Elke vrijdagavond openen wij onze deuren voor alle damliefhebbers. 
+            <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+              Elke vrijdagavond openen wij onze deuren voor alle damliefhebbers.
               Nieuw in de damwereld? Geen probleem, wij helpen je graag op weg!
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="info-card">
-              <InfoCard
-                icon={MapPin}
-                title="Onze Locatie"
-                description="Sigrid Undsetweg 300, 3069 BV Rotterdam (Wijk Ommoord)"
-              >
-                <Button asChild variant="outline" className="btn-dam">
-                  <Link to="/contact">Routebeschrijving</Link>
-                </Button>
-              </InfoCard>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left side - Map */}
+            <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200 h-[632px]">
+              <div className="p-6 border-b">
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-6 h-6 text-primary" />
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">Onze Locatie</h3>
+                    <p className="text-gray-600">Sigrid Undsetweg 300, 3069 BV Rotterdam</p>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full h-[calc(100%-88px)]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d616.0993349065159!2d4.5547064!3d51.9526706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5cd3e2f25259f%3A0x3ef5b1e5f5a5b0a5!2sSigrid%20Undsetweg%20300%2C%203069%20BV%20Rotterdam!5e1!3m2!1snl!2snl!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  className="border-0"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="DC PAR Locatie"
+                ></iframe>
+              </div>
             </div>
-            
-            <div className="info-card">
-              <InfoCard
-                icon={Clock}
-                title="Speeltijden"
-                description="Elke vrijdagavond vanaf 19:00 uur. Leerlingen kunnen vanaf 18:45 binnenlopen."
-              >
-                <Button asChild variant="outline" className="btn-dam">
-                  <Link to="/activiteiten">Meer Info</Link>
-                </Button>
-              </InfoCard>
-            </div>
-            
-            <div className="info-card">
-              <InfoCard
-                icon={Users}
-                title="Voor Iedereen"
-                description="Jong en oud, beginners tot doorgewinterde dammers. Iedereen is welkom!"
-              >
-                <Button asChild variant="outline" className="btn-dam">
-                  <Link to="/lid-worden">Lid Worden</Link>
-                </Button>
-              </InfoCard>
+
+            {/* Right side - Slideshow with time info */}
+            <div className="space-y-6">
+              <SimpleSlideshow
+                images={[
+                  '/Dam-momenten/41.jpg',
+                  '/Dam-momenten/42.jpg',
+                  '/Dam-momenten/44.jpg',
+                  '/Dam-momenten/46.jpg',
+                  '/Dam-momenten/49.jpg',
+                  '/Dam-momenten/5.jpg',
+                  '/Dam-momenten/50.jpg',
+                  '/Dam-momenten/9.jpg',
+                  '/prijzen/16.jpg',
+                  '/prijzen/17.jpg',
+                  '/prijzen/18.jpg',
+                  '/prijzen/20.jpg',
+                  '/prijzen/21.jpg',
+                  '/prijzen/47.jpg',
+                  '/prijzen/11.jpg',
+                  '/prijzen/11 (1).jpg',
+                ]}
+                interval={5000}
+              />
+
+              {/* Time info under slideshow */}
+              <div className="bg-white rounded-xl shadow-xl p-6 border border-gray-200">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-6 h-6 text-primary" />
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900">Speeltijden</h3>
+                      <p className="text-gray-600">Elke vrijdagavond vanaf 19:00 uur</p>
+                      <p className="text-sm text-gray-500">Leerlingen kunnen vanaf 18:45 binnenlopen</p>
+                    </div>
+                  </div>
+                  <Button asChild className="btn-dam border border-gray-300 hover:bg-gray-50">
+                    <Link to="/activiteiten">Meer Info</Link>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="about-section py-16 bg-background">
+      <section className="about-section py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="about-content">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-8">
                 Meer Dan Alleen Dammen
               </h2>
-              <div className="space-y-4 text-muted-foreground">
+              <div className="space-y-5 text-gray-700 text-lg leading-relaxed">
                 <p>
                   DC PAR staat voor gezelligheid, sportiviteit en passie voor het damspel. 
                   Onze club biedt een warme, inclusieve omgeving waar zowel beginners als 
@@ -205,56 +209,72 @@ const Home = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <InfoCard
-                  icon={Trophy}
-                  title="Competitie"
-                  description="Doe mee aan onze interne competitie"
-                />
-                <InfoCard
-                  icon={Calendar}
-                  title="Toernooien"
-                  description="Regelmatige toernooien voor alle niveaus"
-                />
-              </div>
-              <div className="space-y-4 mt-8">
-                <InfoCard
-                  icon={Users}
-                  title="Jeugd"
-                  description="Speciale aandacht voor jonge dammers"
-                />
-                <InfoCard
-                  icon={Phone}
-                  title="Contact"
-                  description="Altijd bereikbaar voor vragen"
-                />
+            <div className="flex items-center justify-center">
+              <div className="grid grid-cols-2 gap-6 max-w-lg">
+                <div className="space-y-6">
+                  <div className="transform hover:scale-105 transition-transform">
+                    <div className="bg-white rounded-xl shadow-lg border-l-4 border-green-600 overflow-hidden">
+                      <div className="p-6">
+                        <div className="flex items-center mb-3">
+                          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <Trophy className="w-6 h-6 text-green-600" />
+                          </div>
+                        </div>
+                        <h3 className="font-semibold text-gray-900 mb-2">Competitie</h3>
+                        <p className="text-sm text-gray-600">Doe mee aan onze interne competitie</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="transform hover:scale-105 transition-transform">
+                    <div className="bg-white rounded-xl shadow-lg border-l-4 border-green-600 overflow-hidden">
+                      <div className="p-6">
+                        <div className="flex items-center mb-3">
+                          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <Calendar className="w-6 h-6 text-green-600" />
+                          </div>
+                        </div>
+                        <h3 className="font-semibold text-gray-900 mb-2">Toernooien</h3>
+                        <p className="text-sm text-gray-600">Regelmatige toernooien voor alle niveaus</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-6">
+                  <div className="transform hover:scale-105 transition-transform">
+                    <div className="bg-white rounded-xl shadow-lg border-l-4 border-green-600 overflow-hidden">
+                      <div className="p-6">
+                        <div className="flex items-center mb-3">
+                          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <Users className="w-6 h-6 text-green-600" />
+                          </div>
+                        </div>
+                        <h3 className="font-semibold text-gray-900 mb-2">Jeugd</h3>
+                        <p className="text-sm text-gray-600">Speciale aandacht voor jonge dammers</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="transform hover:scale-105 transition-transform">
+                    <div className="bg-white rounded-xl shadow-lg border-l-4 border-green-600 overflow-hidden">
+                      <div className="p-6">
+                        <div className="flex items-center mb-3">
+                          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <Phone className="w-6 h-6 text-green-600" />
+                          </div>
+                        </div>
+                        <h3 className="font-semibold text-gray-900 mb-2">Contact</h3>
+                        <p className="text-sm text-gray-600">Altijd bereikbaar voor vragen</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 accent-gradient">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-accent-foreground mb-6">
-            Klaar om te Beginnen?
-          </h2>
-          <p className="text-lg text-accent-foreground/90 mb-8 max-w-2xl mx-auto">
-            Sluit je aan bij onze gezellige damclub en ontdek waarom dammen zo verslavend is. 
-            De eerste les is altijd gratis!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="outline" className="border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10 text-lg px-8 py-3">
-              <Link to="/lid-worden">Meld Je Aan</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10 text-lg px-8 py-3">
-              <Link to="/contact">Neem Contact Op</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* Simple CTA */}
+      <CTA />
     </main>
   );
 };

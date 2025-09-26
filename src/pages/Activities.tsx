@@ -2,57 +2,141 @@ import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Calendar, Clock, Trophy, GraduationCap, Users, Star } from 'lucide-react';
-import InfoCard from '@/components/ui/InfoCard';
-import { Button } from '@/components/ui/button';
+import { InfoCard, Button } from '@/components/ui/ui-components';
 import { Link } from 'react-router-dom';
+import Silk from '@/components/ui/Silk';
+import FloatingShapes from '@/components/ui/FloatingShapes';
+import CTA from '@/components/CTA';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Activities = () => {
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.page-header',
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }
-      );
-
-      gsap.fromTo(
-        '.activity-card',
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.activities-grid',
-            start: 'top 80%',
-          },
+    // Wait for DOM to be ready
+    const timer = setTimeout(() => {
+      const ctx = gsap.context(() => {
+        // Hero section animation
+        const pageHeader = document.querySelector('.page-header');
+        if (pageHeader) {
+          gsap.fromTo(
+            pageHeader,
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }
+          );
         }
-      );
-    });
 
-    return () => ctx.revert();
+        // Parallax and rotation effect on scroll
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+          gsap.to(heroContent, {
+            y: -100,
+            scale: 0.9,
+            opacity: 0.2,
+            rotateX: 10,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.page-header',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: 1.5
+            }
+          });
+        }
+
+        // Activity cards animation
+        const activityCards = document.querySelectorAll('.activity-card');
+        if (activityCards.length > 0) {
+          gsap.fromTo(
+            activityCards,
+            { y: 40, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.6,
+              stagger: 0.15,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: '.activities-grid',
+                start: 'top 80%',
+              },
+            }
+          );
+        }
+
+        // Section animations
+        const contentSections = document.querySelectorAll('.content-section');
+        if (contentSections.length > 0) {
+          gsap.fromTo(
+            contentSections,
+            { y: 60, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              stagger: 0.15,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: '.content-sections',
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+              },
+            }
+          );
+        }
+      });
+
+      return () => ctx.revert();
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <main className="min-h-screen pt-20">
-      {/* Page Header */}
-      <section className="page-header py-16 hero-gradient">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground mb-4">
+    <main className="min-h-screen">
+      {/* Enhanced Hero Section with Silk Background */}
+      <section className="page-header relative min-h-[550px] lg:min-h-[600px] flex items-center justify-center overflow-hidden">
+        {/* Silk Background - Darker and animated */}
+        <div className="silk-background absolute inset-0 z-0" style={{ width: '100%', height: '100%' }}>
+          <Silk
+            speed={1}
+            scale={1.4}
+            color="#177b19"
+            noiseIntensity={1.5}
+            rotation={0.1}
+          />
+        </div>
+
+        {/* Lighter overlay for less dark/dull look */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-primary/40 z-10"></div>
+
+        {/* Content */}
+        <div className="hero-content container relative z-20 mx-auto px-4 text-center pt-24">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 animate-fade-in drop-shadow-2xl">
             Onze Activiteiten
           </h1>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-8 drop-shadow-lg">
             Ontdek alle manieren waarop je kunt deelnemen aan ons rijke clubsleven
           </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="bg-white/20 backdrop-blur-md rounded-lg px-6 py-3 border-2 border-white/40">
+              <span className="text-white font-semibold">Wekelijks programma</span>
+            </div>
+            <div className="bg-white/20 backdrop-blur-md rounded-lg px-6 py-3 border-2 border-white/40">
+              <span className="text-white font-semibold">Toernooien</span>
+            </div>
+            <div className="bg-white/20 backdrop-blur-md rounded-lg px-6 py-3 border-2 border-white/40">
+              <span className="text-white font-semibold">Jeugdactiviteiten</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Main Activities */}
-      <section className="py-16 bg-background">
+      {/* Content Sections with consistent green theme */}
+      <div className="content-sections relative bg-gradient-to-b from-primary/15 via-primary/5 to-transparent">
+        <FloatingShapes />
+
+        {/* Main Activities */}
+        <section className="content-section py-20 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
@@ -103,7 +187,7 @@ const Activities = () => {
                 <div className="mt-4 p-3 bg-muted rounded-lg">
                   <p className="text-sm text-muted-foreground">
                     <strong>Vrijdagavond</strong><br />
-                    Vanaf 8 jaar welkom
+                    Alle leeftijden welkom
                   </p>
                 </div>
               </InfoCard>
@@ -112,8 +196,8 @@ const Activities = () => {
         </div>
       </section>
 
-      {/* Special Events */}
-      <section className="py-16 bg-gradient-subtle">
+        {/* Special Events */}
+        <section className="content-section py-16 relative bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
@@ -126,7 +210,7 @@ const Activities = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="activity-card">
-              <div className="card-elegant p-8">
+              <div className="card-elegant p-8 bg-gradient-to-br from-white/95 to-primary/5 border-primary/20">
                 <div className="flex items-center mb-6">
                   <Trophy className="w-8 h-8 text-accent mr-3" />
                   <h3 className="text-2xl font-heading font-semibold">Clubcompetitie</h3>
@@ -135,20 +219,17 @@ const Activities = () => {
                   Onze jaarlijkse interne competitie waar alle leden aan kunnen deelnemen. 
                   Verschillende klassen zorgen voor spannende en eerlijke wedstrijden.
                 </p>
-                <ul className="space-y-2 text-sm text-muted-foreground mb-6">
+                <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>• Verschillende speelklassen</li>
                   <li>• Seizoen van september tot mei</li>
                   <li>• Prijsuitreiking aan het einde</li>
                   <li>• Voor alle niveaus toegankelijk</li>
                 </ul>
-                <Button asChild className="btn-dam bg-accent hover:bg-accent/90">
-                  <Link to="/competitie">Bekijk Standen</Link>
-                </Button>
               </div>
             </div>
 
             <div className="activity-card">
-              <div className="card-elegant p-8">
+              <div className="card-elegant p-8 bg-gradient-to-br from-white/95 to-primary/5 border-primary/20">
                 <div className="flex items-center mb-6">
                   <Star className="w-8 h-8 text-accent mr-3" />
                   <h3 className="text-2xl font-heading font-semibold">Toernooien</h3>
@@ -157,23 +238,20 @@ const Activities = () => {
                   Regelmatig organiseren wij toernooien voor verschillende groepen. 
                   Van beginnertoernooien tot sterke open toernooien.
                 </p>
-                <ul className="space-y-2 text-sm text-muted-foreground mb-6">
+                <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>• Maandelijkse clubtoernooien</li>
                   <li>• Jeugdtoernooien</li>
                   <li>• Simultaanvoorstellingen</li>
                   <li>• Deelname externe toernooien</li>
                 </ul>
-                <Button asChild variant="outline" className="btn-dam">
-                  <Link to="/contact">Vraag Info</Link>
-                </Button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Schedule */}
-      <section className="py-16 bg-background">
+        {/* Schedule */}
+        <section className="content-section py-16 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
@@ -185,7 +263,7 @@ const Activities = () => {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="card-elegant p-8">
+            <div className="card-elegant p-8 bg-gradient-to-br from-white/95 to-primary/5 border-primary/20 shadow-xl">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-heading font-semibold mb-4 flex items-center">
@@ -236,27 +314,15 @@ const Activities = () => {
           </div>
         </div>
       </section>
+      </div>
 
       {/* CTA */}
-      <section className="py-16 accent-gradient">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-accent-foreground mb-6">
-            Kom Eens Langs!
-          </h2>
-          <p className="text-lg text-accent-foreground/90 mb-8 max-w-2xl mx-auto">
-            Nieuwsgierig geworden? Kom gewoon een keer langs op een vrijdagavond. 
-            Je bent van harte welkom voor een kennismakingsavond.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="outline" className="border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10">
-              <Link to="/contact">Contact Opnemen</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10">
-              <Link to="/lid-worden">Direct Aanmelden</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTA
+        title="Kom Eens Langs!"
+        description="Nieuwsgierig geworden? Elke vrijdagavond vanaf 19:00 uur"
+        buttonText="Direct Aanmelden"
+        buttonLink="/lid-worden"
+      />
     </main>
   );
 };

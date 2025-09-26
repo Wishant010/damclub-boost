@@ -1,0 +1,406 @@
+/* Responsive Design System for DC PAR */
+
+/* ========================================
+   Mobile First Approach - Base Styles
+   ======================================== */
+
+/* Typography - Fluid sizing with clamp() */
+@layer base {
+  html {
+    font-size: clamp(14px, 2.5vw, 18px);
+  }
+
+  h1 {
+    font-size: clamp(1.875rem, 5vw, 4rem);
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    line-height: 1.6;
+  }
+
+  /* Touch-friendly minimum sizes */
+  button,
+  a.btn,
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem 1.25rem;
+  }
+
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+
+  * {
+    max-width: 100%;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ========================================
+   Container & Layout Utilities
+   ======================================== */
+
+@layer utilities {
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Hero sections responsive */
+  .page-header {
+    min-height: 400px;
+    padding: 4rem 1rem 2rem;
+  }
+
+  /* Grid responsive defaults */
+  .grid {
+    gap: 1rem;
+  }
+
+  /* Card spacing on mobile */
+  .card,
+  .card-elegant {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Form elements */
+  input,
+  textarea,
+  select {
+    width: 100%;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  /* Hide decorative elements on mobile */
+  @media (max-width: 640px) {
+    .floating-shapes,
+    .decorative-only {
+      display: none;
+    }
+  }
+}
+
+/* ========================================
+   Breakpoint: Tablet (768px+)
+   ======================================== */
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .page-header {
+    min-height: 500px;
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .grid {
+    gap: 1.5rem;
+  }
+
+  .card,
+  .card-elegant {
+    padding: 1.5rem;
+  }
+
+  /* Show decorative elements */
+  .floating-shapes,
+  .decorative-only {
+    display: block;
+  }
+}
+
+/* ========================================
+   Breakpoint: Desktop (1024px+)
+   ======================================== */
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-header {
+    min-height: 550px;
+    padding: 6rem 2rem 3rem;
+  }
+
+  .grid {
+    gap: 2rem;
+  }
+
+  .card,
+  .card-elegant {
+    padding: 2rem;
+  }
+}
+
+/* ========================================
+   Breakpoint: Large Desktop (1280px+)
+   ======================================== */
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+
+  .page-header {
+    min-height: 600px;
+  }
+}
+
+/* ========================================
+   Breakpoint: XL Desktop (1536px+)
+   ======================================== */
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/* ========================================
+   Component-Specific Responsive Styles
+   ======================================== */
+
+/* Navigation Menu */
+@media (max-width: 1023px) {
+  .nav-desktop {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: block;
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 40;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+}
+
+/* Hero Sections */
+@media (max-width: 767px) {
+  .hero-content {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .hero-content h1 {
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Hero badges */
+  .hero-content .bg-white\/20 {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+  }
+}
+
+/* Cards Grid */
+@media (max-width: 767px) {
+  .grid-cols-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .md\:grid-cols-2,
+  .md\:grid-cols-3,
+  .lg\:grid-cols-3,
+  .lg\:grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Forms */
+@media (max-width: 767px) {
+  form .grid {
+    grid-template-columns: 1fr;
+  }
+
+  form button[type="submit"] {
+    width: 100%;
+  }
+}
+
+/* Pricing Cards */
+@media (max-width: 767px) {
+  .pricing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .pricing-card {
+    width: 100%;
+  }
+}
+
+/* Footer */
+@media (max-width: 767px) {
+  footer .grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  footer .flex {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Activities Cards */
+@media (max-width: 767px) {
+  .activity-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .activity-card h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* CTA Section */
+@media (max-width: 767px) {
+  .cta-section {
+    padding: 2rem 1rem;
+  }
+
+  .cta-section .flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta-section button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* ========================================
+   Utility Classes for Responsive
+   ======================================== */
+
+/* Hide on mobile */
+@media (max-width: 640px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide on tablet */
+@media (max-width: 1023px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+/* Show only on mobile */
+@media (min-width: 641px) {
+  .show-mobile-only {
+    display: none !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .hover\:scale-105:hover {
+    transform: none;
+  }
+
+  .hover\:bg-opacity-20:hover {
+    background-opacity: 1;
+  }
+
+  /* Larger touch targets */
+  a, button {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ========================================
+   Three.js / WebGL Canvas Responsive
+   ======================================== */
+
+@media (max-width: 767px) {
+  /* Disable heavy animations on mobile */
+  .silk-background,
+  .silk-shader {
+    display: none;
+  }
+
+  /* Fallback gradient for mobile */
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #177b19 0%, #22c55e 100%);
+    z-index: 0;
+  }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+  .no-print,
+  header,
+  footer,
+  .nav-mobile,
+  .mobile-menu,
+  button,
+  .cta-section {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: black;
+    background: white;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+}
